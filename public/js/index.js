@@ -134,9 +134,25 @@ function sendTransaction(isAdding) {
       amountEl.value = "";
     }
   })
+  .then(response => response.json())
+  .then(serverResponse => {
+    if (serverResponse.message) {
+      throw new Error(serverResponse);
+    }
+    // open one more transaction
+    const transaction = db.transaction(['new_session'], 'readwrite');
+    // access the new session object store
+    const sessionObjectStore = transaction.objectStore('new_session');
+    // clear all items in the store
+    sessionObjectStore.clear();
+
+    alert('Connection Restored. All saved transactions have been submitted.');
+  })
   .catch(err => {
     // fetch failed, so save in indexed db
+    console.log(err);
     saveRecord(transaction);
+    console.log(formData);
 
     // clear form
     nameEl.value = "";
