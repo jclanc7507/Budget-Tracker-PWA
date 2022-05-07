@@ -162,8 +162,14 @@ function sendTransaction(isAdding) {
 
 document.querySelector("#add-btn").onclick = function() {
   sendTransaction(true);
+  // button animation
+  let button = this;
+  button.classList.add("clicked");
 };
 
 document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
+  // button animation
+  let button = this;
+  button.classList.add("clicked");
 };

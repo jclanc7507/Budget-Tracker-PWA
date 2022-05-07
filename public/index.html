@@ -12,19 +12,26 @@
 
   <title>Budget Tracker</title>
 </head>
+
 <body>
   <div class="wrapper">
     <div class="total">
       <div class="total">Your total is: $<span id="total">0</span></div>
     </div>
 
-    <div class="form">
+    <fieldset class="form">
+      <legend><u><b>Transactions</b></u></legend>
+      <br />
       <input type="text" id="t-name" placeholder="Name of transaction" />
       <input type="number" min="0" id="t-amount" placeholder="Transaction amount" />
-      <button id="add-btn"><i class="fa fa-plus buttons"></i> Add Funds</button>
-      <button id="sub-btn"><i class="fa fa-minus"></i> Subtract Funds</button>
+      <button id="add-btn">
+        <span class="add-funds"><i class="fa button"></i>💰 Add Funds</span>
+      </button>
+      <button id="sub-btn">
+        <span class="sub-funds"><i class="fa button"></i>💸 Subtract Funds</span>
+      </button>
       <p class="error"></p>
-    </div>
+    </fieldset>
 
     <div class="transactions">
       <table>
@@ -41,8 +48,18 @@
     <canvas id="myChart"></canvas>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="js/index.js"></script>
-  <script src="./js/idb.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script defer src="js/index.js"></script>
+  <script defer src="./js/idb.js"></script>
+  <script defer>
+    (function() {
+      if("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./service-worker.js")
+          .then(() => console.log("Service Worker registered successfully"))
+          .catch(error => console.log("Error registering service worker"));
+      }
+    })();
+  </script>
 </body>
+
 </html>

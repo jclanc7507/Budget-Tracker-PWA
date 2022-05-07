@@ -1,6 +1,6 @@
 {
-  "name": "Food Event",
-  "short_name": "Foodies",
+  "name": "Budget Tracker",
+  "short_name": "Budget",
   "icons": [
     {
       "src": "./icons/icon_72x72.png",
