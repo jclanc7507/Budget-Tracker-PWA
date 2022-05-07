@@ -1,6 +1,10 @@
 let transactions = [];
 let myChart;
 
+var fundsAdded = "Funds have been added.";
+
+var fundsSubtracted = "Funds have been subtracted.";
+
 fetch("/api/transaction")
   .then(response => {
     return response.json();
@@ -162,14 +166,10 @@ function sendTransaction(isAdding) {
 
 document.querySelector("#add-btn").onclick = function() {
   sendTransaction(true);
-  // button animation
-  let button = this;
-  button.classList.add("clicked");
+  alert(fundsAdded);
 };
 
 document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
-  // button animation
-  let button = this;
-  button.classList.add("clicked");
+  alert(fundsSubtracted);
 };
