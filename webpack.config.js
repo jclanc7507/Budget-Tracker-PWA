@@ -47,7 +47,7 @@ const config = {
     new WebpackPwaManifest({
       name: 'Budget Tracker',
       short_name: 'Budget',
-      start_url: '../index.html',
+      start_url: '../server.js',
       background_color: '#01579b',
       theme_color: '#ffffff',
       display: "standalone",
